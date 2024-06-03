@@ -1,0 +1,11 @@
+extends common/layout 
+
+block layout-content 
+ .error-page
+  .error-contentbg 
+      .error-context
+        h4.error-maintext Oops! Looks like we don't have what you're looking for.
+        p.error-text Home is just a click away. Let's go back and give it another try.
+        .form 
+        form(action="/" method="get")
+            button#explore-btn(type="submit") Back Home

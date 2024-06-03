@@ -1,0 +1,35 @@
+doctype html 
+html 
+  head 
+    meta(charset="utf-8", name="viewport", content="width=device-width, initial-scale=1")
+    title #(title) | Fashion Forecast
+    link(rel="stylesheet", href="/css/style.css")
+    link(href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet')
+  body 
+    header#header 
+      .header-content 
+        .nav 
+         h2#site-name
+           a(href="/") Fashion Forecast
+         ul#nav-items
+           li 
+             a(href="/") Home 
+           li 
+             a(href="/about")  About
+           li 
+             a(href="/explore")  Fashion
+         ul.hidden#dropnav
+           li 
+             a(href="/") Home 
+           li 
+             a(href="/about")  About
+           li 
+             a(href="/explore")  Fashion
+         label.icons(for="navitems-toggle")
+           i(class='bx bx-menu') 
+  
+    block layout-content 
+    
+    footer#footer 
+      p.footer-content &copy; Copyright HTTP5222, 2024   
+    script(src="script.js")    

@@ -1,0 +1,42 @@
+extends common/layout 
+
+block layout-content 
+  main#main-explore
+
+    .weather-map 
+      .weatherinfo 
+        .weather-content
+          if weather 
+            .weather-temp 
+              img#weather-icon(src="https://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png")
+            .weather-text
+              p#weather-temp #{weather.main.temp} °C
+              p#weather-city City: #{weather.name}
+              p#weather-desc Description: #{weather.weather[0].description}
+          else  
+            p Weather data not available
+
+      .form 
+        .form-content 
+         h3.form-head Personalize by Location and Gender
+          form.form-fields(action="/explore" method="get")
+           div
+            label(for="city") City: 
+            input.city(type="text" name="city" placeholder="eg. Toronto")
+           div 
+            label(for="gender") Gender: 
+            select(name="gender")
+              option(value="woman") Woman
+              option(value="man") Man
+           div
+            button#explore-btn(type="submit") Explore
+
+    .pexels
+      .pexelsinfo 
+        h3 Explore Style
+        .pexels-images
+          if pexelsData 
+            each photo in pexelsData.photos 
+              img.pexelimg(src=photo.src.medium)
+          else  
+            p Pexels data not available

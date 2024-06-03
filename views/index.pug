@@ -1,0 +1,15 @@
+extends common/layout 
+
+block layout-content 
+  main#main 
+    .hero
+      .hero-content
+        .hero-text
+          p#site-desc Find you daily lookbook.
+          h1#site-title Elevate Your Style
+          p#site-desc2 Everyday’s guide to fashion based on everyday’s weather
+        .explore-btn  
+          form(action="/explore" method="get")
+            button#explore-btn(type="submit") Explore
+
+   
