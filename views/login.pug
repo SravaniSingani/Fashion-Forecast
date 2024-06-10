@@ -1,0 +1,16 @@
+extends common/layout
+
+block layout-content 
+  .login
+    h1.login-title LOGIN
+    .login-contentbg 
+      .login-context
+        form.login-form(action="/login" method="POST")
+          .form-group
+            label(for="username") Username
+            input#username(type="text" name="username" placeholder="Enter your username" required)
+          .form-group
+            label(for="password") Password
+            input#password(type="password" name="password" placeholder="Enter your password" required)
+          .form-group
+            button#login-btn(type="submit") Login

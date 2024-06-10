@@ -117,6 +117,92 @@ body{
     color: #121A31;
 }
 
+/* Login Page */
+.login {
+    margin-top: 150px;
+    margin-bottom: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .login-title {
+    font-family: 'Krona One', sans-serif;
+    font-size: 36px;
+    color: #121A31;
+    margin-bottom: 20px;
+  }
+  
+  .login-contentbg {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+  }
+  
+  .login-context {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .login-form {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login-form .form-group {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .login-form label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  
+  .login-form input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  #login-btn {
+    width: 100%;
+    padding: 10px;
+    background: #121A31;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background 0.3s;
+  }
+  
+  #login-btn:hover {
+    background: #3a5457;
+  }
+
+/* Admin Page */
+
+.admin{
+    margin: 150px 50px 50px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.content-edit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
 
 /* index hero */
 
@@ -238,6 +324,37 @@ body{
     background-color: #131313;
     color: #fdfdfd;
 }
+
+/* style form page */
+#main-styleform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    animation: fadeIn 1.5s forwards;
+}
+
+.style-options label span{
+    display: inline-block;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    box-shadow: 0px 5px 5px #121A31;
+  }
+  
+  .style-options input[type="checkbox"] {
+    display: none;
+  }
+  
+  .style-options input[type="checkbox"]:checked + span {
+    background-color: #020715;
+    color: #f0f0f0;
+
+  }
 
 /* explore page */
 /* weather map information */

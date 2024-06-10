@@ -1,0 +1,34 @@
+extends common/layout
+
+block layout-content
+  main#main 
+    .admin
+      .admin-content
+        .admin-text
+          .content-addstyle
+            h2.addstyle-title Add a Style Name
+            form(method="POST", action="/admin/style/add/submit")
+              div 
+                label(for="stylename") Style Name: 
+                input(type="text", id="stylename", name="stylename")
+              button(type="submit") Add
+          .content-stylelist 
+            h2.stylelist-title List of Styles
+            table 
+              thead 
+                tr 
+                  th Style 
+                  th Update 
+                  th Remove 
+              tbody
+                each style in styles 
+                  tr 
+                    td #{style.stylename} 
+                    td 
+                      form(method="GET", action="/admin/style/edit")
+                        input(type="hidden", name="styleid", value=style._id.toHexString())
+                        button(type="submit") Edit
+                    td
+                      form(method="POST", action="/admin/style/delete")
+                        input(type="hidden", name="styleId", value=style._id)
+                        button(type="submit") Delete

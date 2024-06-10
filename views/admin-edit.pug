@@ -1,0 +1,15 @@
+extends common/layout
+
+block layout-content
+  main#main 
+    .admin
+      .admin-content
+        .admin-text
+          .content-editstyle
+            h2.editstyle-title Edit a Style Name
+            form(method="POST", action="/admin/style/edit/submit")
+              input(type="hidden", name="styleId", value=editStyle._id.toHexString()) 
+              div 
+                label(for="stylename") Style Name: 
+                input(type="text", id="stylename", name="stylename", value=editStyle.stylename)
+              button(type="submit") Edit

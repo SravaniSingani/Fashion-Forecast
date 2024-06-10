@@ -1,0 +1,40 @@
+extends common/layout
+
+block layout-content
+  main#main-styleform
+    .form 
+      .form-content 
+        h3.form-head Personalize by Location and Gender
+        form.form-fields(action="/explore" method="get" onsubmit="return validateForm()")
+          div
+            label(for="city") City: 
+            input.city(type="text" name="city" placeholder="eg. Toronto")
+          div 
+            label(for="gender") Gender: 
+            select(name="gender")
+              option(value="woman") Woman
+              option(value="man") Man
+          div 
+            h2.stylelist-title List of Styles
+            .style-options
+              each style in styles 
+                label
+                  input(type="checkbox" name="styles" value=style.stylename)
+                  span #{style.stylename}
+          div
+            p#error-message(style="color: red; display: none;") Please select exactly 2 or 3 styles.
+          div
+            button#explore-btn(type="submit") Explore
+
+  script.
+    function validateForm() {
+      const checkboxes = document.querySelectorAll('input[name="styles"]:checked');
+      const errorMessage = document.getElementById('error-message');
+      if (checkboxes.length < 2 || checkboxes.length > 3) {
+        errorMessage.style.display = 'block';
+        return false;
+      } else {
+        errorMessage.style.display = 'none';
+        return true;
+      }
+    }
