@@ -105,6 +105,7 @@ body{
     text-shadow: #dadbdb 1px 0 10px;
 }
 
+
 /* #site-name a:visited {
     color: #4a6f73;
 } */
@@ -113,7 +114,7 @@ body{
     font-family: "Krona One", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 36px;
+    font-size: 30px;
     color: #121A31;
 }
 
@@ -197,6 +198,13 @@ body{
     justify-content: flex-start;
 }
 
+.admin-text{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
 .content-edit{
     display: flex;
     flex-direction: column;
@@ -204,10 +212,115 @@ body{
     justify-content: flex-start;
 }
 
+.addstyle-title,
+.stylelist-title{
+    font-family: "Kumbh Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "YOPQ" 300;
+    color: #121A31;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+.admin thead {
+    font-size: 20px;
+    font-family: "Kumbh Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-variation-settings:
+        "YOPQ" 300;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+
+.stylenames{
+    font-size: 20px;
+    font-family: "Kumbh Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "YOPQ" 300;
+    color: #121A31;
+    margin-bottom: 20px;
+}
+
+.admin button{
+    font-family: "Kumbh Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px; 
+    border: 1px solid #263536;
+    border-radius: 10px;
+    padding: 7px 10px;
+    box-shadow: 0px 2px 2px #263536;
+}
+
+.admin button:hover{
+    transform: scale(1.1);
+    box-shadow: 1px 1px 1px #c2c2c6;
+    color: #131313;
+    border: 1px solid #263536;
+}
+
+.admin form label {
+    font-family: "Kumbh Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px; 
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .admin form input[type="text"] {
+    font-family: "Kumbh Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px; 
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+
+  .admin form input[type="text"]:hover {
+    box-shadow: 0px 2px 2px #263536;
+  }
+
+.edit{
+    background-color: #3579b4;
+    color: #dadbdb;
+}
+
+.delete-btn{
+    background-color: rgb(189, 48, 48);
+    color: #dadbdb;
+}
+
+.content-stylelist table td
+.content-stylelist table th{
+    padding: 10px;
+}
+
 /* index hero */
 
 .hero{
-    margin-top: 130px;
+    margin-top: 110px;
     padding: 40px;
     display: flex;
     flex-direction: row;
@@ -333,6 +446,7 @@ body{
     margin-top: 150px;
     margin-bottom: 100px;
     animation: fadeIn 1.5s forwards;
+    padding: 40px;
 }
 
 .style-options label span{
@@ -344,6 +458,10 @@ body{
     margin: 5px;
     cursor: pointer;
     box-shadow: 0px 5px 5px #121A31;
+  }
+
+  .style-options label span:hover{
+    transform: translateY(2px);
   }
   
   .style-options input[type="checkbox"] {
@@ -489,7 +607,7 @@ background: linear-gradient(#263536, #020715);
 
 .pexels{
     padding: 50px 120px;
-    background: linear-gradient(#FDFDFF, #263536 , #131313);
+    background: #dfdfe3;
 }
 
 .pexelsinfo {
@@ -739,7 +857,7 @@ background: linear-gradient(#263536, #020715);
 
     
     #site-name{
-        font-size: 30px;
+        font-size: 24px;
     }
 
     .hero{
@@ -895,6 +1013,11 @@ background: linear-gradient(#263536, #020715);
         flex-direction: column;
         padding: 30px;
         gap: 30px;
+    }
+
+    .about-title{
+        font-size: 26px; 
+        letter-spacing: 1px;
     }
 
     .about-context{

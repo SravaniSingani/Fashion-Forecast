@@ -7,28 +7,43 @@ block layout-content
         .admin-text
           .content-addstyle
             h2.addstyle-title Add a Style Name
-            form(method="POST", action="/admin/style/add/submit")
+            form(method="POST", action="/admin/style/add/submit" onsubmit="return validateAdminForm()")
               div 
                 label(for="stylename") Style Name: 
                 input(type="text", id="stylename", name="stylename")
-              button(type="submit") Add
+              div
+                p#error-message(style="color: red; display: none;") Please enter a valid stylename.
+              button(type="submit" class="add-btn") Add
           .content-stylelist 
             h2.stylelist-title List of Styles
             table 
               thead 
                 tr 
-                  th Style 
-                  th Update 
-                  th Remove 
+                  th Stylename
+                  th  Actions
+                  th  
               tbody
                 each style in styles 
                   tr 
-                    td #{style.stylename} 
+                    td.stylenames #{style.stylename} 
                     td 
                       form(method="GET", action="/admin/style/edit")
                         input(type="hidden", name="styleid", value=style._id.toHexString())
-                        button(type="submit") Edit
+                        button(type="submit" class="edit") Edit
                     td
                       form(method="POST", action="/admin/style/delete")
                         input(type="hidden", name="styleId", value=style._id)
-                        button(type="submit") Delete
+                        button(type="submit" class="delete-btn") Delete
+
+  script.
+    function validateAdminForm() {
+      const addStylename = document.querySelector('input[name="stylename"]').value;
+      const errorMessage = document.getElementById('error-message');
+      if (addStylename.trim() === "") {
+        errorMessage.style.display = 'block';
+        return false;
+      } else {
+        errorMessage.style.display = 'none';
+        return true;
+      }
+    }

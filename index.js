@@ -171,89 +171,6 @@ app.get("/styleform", async (req, res) => {
 
 });
 
-
-// Function to retrieve the explore page
-// app.get("/explore", async (req, res) => {
-//     try {
-//         const city = req.query.city || "toronto";
-//         const gender = req.query.gender || "Woman";
-
-//         const weatherRes = await axios.get("https://api.openweathermap.org/data/2.5/weather", {
-//             params: {
-//                 q: city,
-//                 appId: process.env.WEATHER_API,
-//                 units: "metric"
-//             }
-//         });
-
-//         if (!weatherRes.data.name) {
-//             res.render("error", { message: "City not found" });
-//             return;
-//         }
-
-//         const weatherDesc = weatherRes.data.weather[0].description;
-//         const icon = weatherRes.data.weather[0].icon;
-//         const keywords = getKeywords(weatherDesc, gender);
-
-//         const pexelsRes = await axios.get("https://api.pexels.com/v1/search", {
-//             headers: {
-//                 Authorization: process.env.PEXELS_API
-//             },
-//             params: {
-//                 query: keywords.join(", "),
-//                 per_page: 10
-//             }
-//         });
-
-//         res.render("explore", {
-//             title: "Explore",
-//             weather: weatherRes.data,
-//             pexelsData: pexelsRes.data
-//         });
-//     } catch (error) {
-//         if (error.response) {
-//             console.error("Error: ", error.response.data);
-//         } else {
-//             console.error("Error: ", error.message);
-//         }
-        
-//         res.status(500).render("error", { message: "Internal Server Error" });
-//     }
-// });
-
-// function getKeywords(weatherDesc, gender) {
-//     const weatherKeywords = {
-//         "clear sky": ["tshirt", "shorts", "casual"],
-//         "few clouds": ["cloudy", "casual"],
-//         "scattered clouds": ["casual", "shirt", "pants"],
-//         "broken clouds": ["layered", "stylish"],
-//         "moderate rain": ["sweater", "raincoat"],
-//         "light rain": ["waterproof", "sweater"],
-//         "shower rain": ["waterproof", "rainy"],
-//         "rain": ["turtleneck", "coat", "umbrella"],
-//         "thunderstorm": ["pullover", "jacket"],
-//         "snow": ["beanie", "coat", "sweater"],
-//         "mist": ["turtleneck", "coat"],
-//         "smoke": ["turtleneck", "jacket"],
-//         "haze": ["sweater", "beanie"],
-//         "dust": ["coat", "jacket"],
-//         "fog": ["sweater", "coat"],
-//         "sand": ["shirt", "shorts"],
-//         "ash": ["warm shirt", "stylish"],
-//         "squall": ["cardigan", "shirt"],
-//         "tornado": ["wind", "jacket"],
-//         "overcast clouds": ["casual", "fashion"]
-//     };
-
-//     if (weatherKeywords[weatherDesc]) {
-//         return gender ? [gender, ...weatherKeywords[weatherDesc]] : weatherKeywords[weatherDesc];
-//     } else {
-//         const generalKeywords = ["outfit", 'fashion'];
-//         return gender ? [gender, weatherDesc, ...generalKeywords] : [weatherDesc, ...generalKeywords];
-//     }
-// }
-
-
 // testing explore code based on the keywords selected
 app.get("/explore", async (req, res) => {
     try {
@@ -322,10 +239,10 @@ app.get("/explore", async (req, res) => {
 
 function getAccessories(weatherDesc, gender) {
     const weatherKeywords = {
-        "clear sky": ["sunglasses", "hat"],
-        "few clouds": ["light jacket", "cap"],
-        "scattered clouds": ["light jacket", "cap"],
-        "broken clouds": ["jacket", "cap"],
+        "clear sky": ["cap", "hat", "sunglasses", "sun"],
+        "few clouds": ["light jacket", "cap", "sun"],
+        "scattered clouds": ["cap", "hat", "sunglasses"],
+        "broken clouds": ["cap", "hat", "sunglasses","warm"],
         "moderate rain": ["umbrella", "raincoat"],
         "light rain": ["umbrella", "raincoat"],
         "shower rain": ["umbrella", "raincoat"],
@@ -348,6 +265,7 @@ function getAccessories(weatherDesc, gender) {
 
     if (weatherKeywords[weatherDesc]) {
         keywords = gender ? [gender, ...weatherKeywords[weatherDesc]] : weatherKeywords[weatherDesc];
+        console.log(keywords);
     } else {
         const generalKeywords = ["accessory", "clothing"];
         keywords = gender ? [gender, weatherDesc, ...generalKeywords] : [weatherDesc, ...generalKeywords];

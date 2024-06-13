@@ -7,9 +7,24 @@ block layout-content
         .admin-text
           .content-editstyle
             h2.editstyle-title Edit a Style Name
-            form(method="POST", action="/admin/style/edit/submit")
+            form(method="POST", action="/admin/style/edit/submit" onsubmit="return validateAdminEditForm()")
               input(type="hidden", name="styleId", value=editStyle._id.toHexString()) 
               div 
                 label(for="stylename") Style Name: 
                 input(type="text", id="stylename", name="stylename", value=editStyle.stylename)
+              div
+                p#error-message(style="color: red; display: none;") Please enter a valid stylename.
               button(type="submit") Edit
+  
+  script.
+    function validateAdminEditForm() {
+      const addStylename = document.querySelector('input[name="stylename"]').value;
+      const errorMessage = document.getElementById('error-message');
+      if (addStylename.trim() === "") {
+        errorMessage.style.display = 'block';
+        return false;
+      } else {
+        errorMessage.style.display = 'none';
+        return true;
+      }
+    }
