@@ -1,16 +1,46 @@
-extends common/layout
+extends common/adminnav
 
 block layout-content 
   .login
     h1.login-title LOGIN
     .login-contentbg 
       .login-context
-        form.login-form(action="/login" method="POST")
+        form.login-form(action="/login" method="POST" onsubmit="return validateLoginForm()")
           .form-group
             label(for="username") Username
             input#username(type="text" name="username" placeholder="Enter your username" required)
+            p#error-username(style="color: red; display: none;") Please enter your username.
           .form-group
             label(for="password") Password
             input#password(type="password" name="password" placeholder="Enter your password" required)
+            p#error-password(style="color: red; display: none;") Please enter your password.
+          if errorMessage
+            p.error-message(style="color: red;") #{errorMessage}
           .form-group
             button#login-btn(type="submit") Login
+
+  script.
+    function validateLoginForm() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorUsername = document.getElementById('error-username');
+      const errorPassword = document.getElementById('error-password');
+
+      let isValid = true;
+
+      if (!username.trim()) {
+        errorUsername.style.display = 'block';
+        isValid = false;
+      } else {
+        errorUsername.style.display = 'none';
+      }
+
+      if (!password.trim()) {
+        errorPassword.style.display = 'block';
+        isValid = false;
+      } else {
+        errorPassword.style.display = 'none';
+      }
+
+      return isValid;
+    }

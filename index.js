@@ -5,6 +5,7 @@ const axios = require("axios");
 const dotenv = require("dotenv");
 const { MongoClient, ObjectId } = require('mongodb');
 const session = require("express-session");
+const bcrypt = require("bcrypt");
 
 dotenv.config();
 
@@ -40,6 +41,12 @@ async function connection(){
     return db;
 }
 
+// Get username 
+async function getUserByUsername(username){
+    const db = await connection();
+    return await db.collection("users").findOne({ username: username });
+}
+
 // Get styledata collections
 async function getStyles(){
     const db = await connection();
@@ -55,7 +62,7 @@ async function getSingleStyle(id) {
 
 // CRUD functions
 // Retrieve the style list from the database
-app.get("/admin", async (req, res) => {
+app.get("/admin", ensureAuthenticated, async (req, res) => {
     try {
         const styles = await getStyles();
         res.render("admin", { title: "Style List", styles });
@@ -141,9 +148,65 @@ async function deleteStyle(filter) {
 // Function to retrieve the login page
 app.get("/login", async (req, res) => {
     res.render("login", {
-        title: "Login"
+        title: "Login",
+        user: req.session.user
     });  
 });
+
+// Logout route
+app.post("/logout", (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).send("Error logging out");
+        }
+        res.redirect("/login");
+    });
+});
+
+// Middleware to make the user available to Pug templates
+app.use((req, res, next) => {
+    res.locals.user = req.session.user;
+    next();
+});
+
+
+// Handle login form submission
+app.post("/login", async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const user = await getUserByUsername(username);
+
+        if (!user) {
+            return res.render("login", { title: "Login", errorMessage: "Invalid username or password" });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.render("login", { title: "Login", errorMessage: "Invalid username or password" });
+        }
+
+        req.session.user = {
+            username: user.username,
+            role: user.role
+        };
+
+        res.redirect("/admin");
+    } catch (error) {
+        console.error("Error logging in:", error);
+        res.status(500).send("Error logging in");
+    }
+});
+
+// Middleware to ensure user is authenticated
+function ensureAuthenticated(req, res, next) {
+    if (req.session.user && req.session.user.role === 'admin') {
+        return next();
+    } else {
+        res.redirect("/login");
+    }
+}
 
 // Function to retrieve the home page
 app.get("/", async (req, res) => {
