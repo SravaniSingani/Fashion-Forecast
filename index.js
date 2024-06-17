@@ -301,24 +301,24 @@ app.get("/explore", async (req, res) => {
 });
 
 function getAccessories(weatherDesc, gender) {
-    const weatherKeywords = {
-        "clear sky": ["cap", "hat", "sunglasses", "sun"],
+   const weatherKeywords = {
+        "clear sky": ["cap", "hat", "sunglasses"],
         "few clouds": ["light jacket", "cap", "sun"],
         "scattered clouds": ["cap", "hat", "sunglasses"],
         "broken clouds": ["cap", "hat", "sunglasses","warm"],
         "moderate rain": ["umbrella", "raincoat"],
-        "light rain": ["umbrella", "raincoat"],
-        "shower rain": ["umbrella", "raincoat"],
-        "rain": ["umbrella", "raincoat"],
-        "thunderstorm": ["umbrella", "raincoat"],
-        "snow": ["gloves", "scarf", "boots"],
+        "light rain": ["umbrella", "raincoat", "jacket"],
+        "shower rain": ["umbrella", "raincoat", "jacket"],
+        "rain": ["umbrella", "raincoat", "jacket"],
+        "thunderstorm": ["umbrella", "raincoat", "jacket"],
+        "snow": ["gloves", "scarf", "snow boots"],
         "mist": ["scarf", "hat"],
         "smoke": ["mask", "beanie"],
         "haze": ["mask", "beanie"],
-        "dust": ["mask", "hat"],
-        "fog": ["scarf", "hat"],
-        "sand": ["mask", "hat"],
-        "ash": ["mask", "hat"],
+        "dust": ["mask", "cap"],
+        "fog": ["scarf", "cap"],
+        "sand": ["mask", "cap"],
+        "ash": ["mask", "cap"],
         "squall": ["windbreaker", "hat"],
         "tornado": ["windbreaker", "hat"],
         "overcast clouds": ["jacket", "scarf"]
@@ -327,7 +327,7 @@ function getAccessories(weatherDesc, gender) {
     let keywords = [];
 
     if (weatherKeywords[weatherDesc]) {
-        keywords = gender ? [gender, ...weatherKeywords[weatherDesc]] : weatherKeywords[weatherDesc];
+        keywords = gender ? ["fashion", gender, ...weatherKeywords[weatherDesc]] : weatherKeywords[weatherDesc];
         console.log(keywords);
     } else {
         const generalKeywords = ["accessory", "clothing"];
