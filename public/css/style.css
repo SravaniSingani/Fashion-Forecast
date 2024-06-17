@@ -521,14 +521,18 @@ th, td {
 /* weather map information */
 
 .weather-map {
-    margin-top: 150px;
+    margin-top: 80px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    background: linear-gradient(#373738, #021719);
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 5px 5px #121A31; 
     padding: 50px;
-    gap: 40px;
+    gap: 20px;
     animation: fadeIn 2s forwards;
 }
 
@@ -603,16 +607,21 @@ th, td {
 .weather-content{
 
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
     border: 1px solid none;
     border-radius: 40px;
     padding: 40px;
     color: #FDFDFF;
-    box-shadow: 0px 5px 5px #dfdfe3;
-    background: linear-gradient(#b8caed, #639498);
+    text-align: center;
+    /* 
+    box-shadow: 0px 5px 5px #dfdfe3;*/
+    /* background: linear-gradient(#b8caed, #639498); 
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 5px 5px #121A31; */
 }
 
 #weather-temp{
@@ -626,20 +635,21 @@ th, td {
 .weather-content #weather-city{
     font-family: "Kumbh Sans", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 700;
+    font-weight: 500;
     font-style: normal;
-    font-size: 20px; 
+    font-size: 18px; 
 }
 
 .weather-content #weather-icon{
-    width: 100px;
-    filter: drop-shadow(5px 5px 5px #222);
+    width: 120px;
+    filter: drop-shadow( 2px 5px 5px #121A31);
+
 }
 
 .weather-content #weather-desc{
     font-family: "Kumbh Sans", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400;
+    font-weight: 300;
     font-style: normal;
     font-size: 20px; 
 }
@@ -669,6 +679,16 @@ background: linear-gradient(#263536, #020715);
     opacity: 0;
     animation: fadeIn 1s ease 1.5s forwards;
    
+}
+
+.pexelsinfo h3{
+    font-family: "Kumbh Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 30px; 
+    color: #020715;
+    letter-spacing: 2px;
 }
 
 .pexels-images{
@@ -762,7 +782,7 @@ background: linear-gradient(#263536, #020715);
 /* error page */
 
 .error-page{
-    margin-top: 170px;
+    margin-top: 110px;
 }
 
 .error-title{
@@ -780,13 +800,13 @@ background: linear-gradient(#263536, #020715);
     background-image: url(../css/img/errorimg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
-    min-height: calc(90vh - 20px);
+    height: 80vh;
+    min-height: calc(80vh - 20px);
 }
 
 .error-context{
     margin: 70px;
-    padding: 20px;
+    padding: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1107,10 +1127,31 @@ background: linear-gradient(#263536, #020715);
         width: 160px;
     }
 
+    .pexelsinfo h3{
+        font-size: 24px;
+    }
+
     .weather-map {
         flex-direction: column;
         padding: 30px;
         gap: 30px;
+    }
+
+    .weather-content #weather-icon{
+        width: 90px;
+    
+    }
+
+    #weather-temp{
+        font-size: 22px; 
+    }
+    
+    .weather-content #weather-city{
+        font-size: 16px; 
+    }
+    
+    .weather-content #weather-desc{
+        font-size: 18px; 
     }
 
     .about-title{
