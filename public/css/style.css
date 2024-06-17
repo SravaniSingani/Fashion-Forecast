@@ -28,7 +28,7 @@ body{
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 15px 30px;
+    padding: 20px 30px;
     background-color: #131313;
     /* -webkit-backdrop-filter: blur(70px);
     backdrop-filter: blur(70px); */
@@ -360,7 +360,7 @@ th, td {
 /* index hero */
 
 .hero{
-    margin-top: 110px;
+    margin-top: 120px;
     padding: 40px;
     display: flex;
     flex-direction: row;
@@ -856,7 +856,7 @@ background: linear-gradient(#263536, #020715);
 @media screen and (max-width: 768px), (max-width: 870px) {
 
     .nav{
-        padding: 15px 30px;
+        padding: 20px 30px;
     }
     
     #nav-items{
@@ -1077,7 +1077,7 @@ background: linear-gradient(#263536, #020715);
     }
 
     .hero{
-        margin-top: 88px;
+        margin-top: 84px;
         padding: 20px;
     }
 
