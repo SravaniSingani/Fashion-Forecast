@@ -15,7 +15,7 @@ Fashion Forecast is a web application that utilizes the OpenWeatherMap and Pexel
 - **API Integration:** Integration with OpenWeatherMap and Pexels APIs ensures accurate weather data and relevant fashion images.
 - **Dynamic Frontend:** PUG templates are used to dynamically render the frontend based on user inputs and API responses.
 
-## Technologies Used
+## Tech Stack
 
 ### Frontend
 
